@@ -71,13 +71,13 @@ function start(options: Options) {
   }
 
   let osType = Config.osType();
-  let stdio = options[Opt.QUIET].getBoolean() ? 'pipe' : 'inherit';
   let binaries = FileManager.setupBinaries();
   let seleniumPort = options[Opt.SELENIUM_PORT].getString();
   let appiumPort = options[Opt.APPIUM_PORT].getString();
   let avdPort = options[Opt.AVD_PORT].getNumber();
   let android = options[Opt.ANDROID].getBoolean();
   let outputDir = Config.getSeleniumDir();
+  let stdio = options[Opt.QUIET].getBoolean() ? 'ignore' : 'inherit';
   if (options[Opt.OUT_DIR].getString()) {
     if (path.isAbsolute(options[Opt.OUT_DIR].getString())) {
       outputDir = options[Opt.OUT_DIR].getString();
